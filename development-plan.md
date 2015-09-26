@@ -1,11 +1,15 @@
 #Development Plan 
 
-1. Register bot and execute 'Hello world' every 3 hours.
+Aim is to get a working prototype to tweet air quality data for Kuala Lumpur Malaysia. 
 
-2. Deploy to Heroku and test
 
-3. Scrape (http://apims.doe.gov.my/v2/) locally in python file
+#Milestones 
+- [ ]  Register bot and execute 'Hello world' every 3 hours.
 
-4. Connect bot with scraping file locally and test output
+- [ ] Deploy to Heroku and test
 
-5. Push all files to Heroku
+- [ ] Scrape (http://apims.doe.gov.my/v2/) locally in python file
+
+- [ ] Connect bot with scraping file locally and test output
+
+- [ ] Push all files to Heroku
