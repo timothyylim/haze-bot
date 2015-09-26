@@ -4,7 +4,7 @@ Aim is to get a working prototype to tweet air quality data for Kuala Lumpur Mal
 
 
 #Milestones 
-- [ ]  Register bot and execute 'Hello world' every 3 hours.
+- [x]  Register bot and execute 'Hello world' every 3 hours.
 
 - [ ] Deploy to Heroku and test
 
