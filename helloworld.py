@@ -59,7 +59,7 @@ while x == 0:
 		print "----------------------------------"
 		print "reading is the same, going to sleep"
 		api.update_status(status = "going to sleep for 15 mins:" + str(count))
-		count = count + 1 
+		count += 1 
 		print datetime.now()
 		print "----------------------------------"
 		time.sleep(900)
