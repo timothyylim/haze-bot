@@ -33,7 +33,7 @@ filename.close()
 api_reading_seed = scrape_function.test_function()
 
 # print api_reading_seed
-
+api.update_status(status = "Hello World!")
 x = 0 
 while x == 0:
 	
@@ -59,6 +59,8 @@ while x == 0:
 		print datetime.now()
 		print "----------------------------------"
 		time.sleep(300)
+
+
 
 
 # for line in f:
