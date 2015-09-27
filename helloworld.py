@@ -42,9 +42,10 @@ while x == 0:
 	if api_reading == "empty":
 		print "----------------------------------"
 		print api_reading + "going to sleep now"
+		api.update_status(status = "going to sleep for 20 mins")
 		print datetime.now()
 		print "----------------------------------"
-		time.sleep(300)
+		time.sleep(1200)
 	elif api_reading != api_reading_seed:
 		print "----------------------------------"
 		api.update_status(status = api_reading)
