@@ -35,6 +35,7 @@ api_reading_seed = scrape_function.test_function()
 # print api_reading_seed
 api.update_status(status = "Hello World!")
 x = 0 
+count = 0
 while x == 0:
 	
 	api_reading = scrape_function.test_function()
@@ -42,10 +43,10 @@ while x == 0:
 	if api_reading == "empty":
 		print "----------------------------------"
 		print api_reading + "going to sleep now"
-		api.update_status(status = "going to sleep for 20 mins")
+		api.update_status(status = "going to sleep for 15 mins")
 		print datetime.now()
 		print "----------------------------------"
-		time.sleep(1200)
+		time.sleep(900)
 	elif api_reading != api_reading_seed:
 		print "----------------------------------"
 		api.update_status(status = api_reading)
@@ -57,9 +58,11 @@ while x == 0:
 	else:
 		print "----------------------------------"
 		print "reading is the same, going to sleep"
+		api.update_status(status = "going to sleep for 15 mins:" + str(count))
+		count = count + 1 
 		print datetime.now()
 		print "----------------------------------"
-		time.sleep(300)
+		time.sleep(900)
 
 
 
