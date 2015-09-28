@@ -45,7 +45,7 @@ print "----------------------------------"
 
 # print api_reading_seed
 
-api.update_status(status = "Hello World!")
+# api.update_status(status = "Hello World!")
 x = 0 
 count = 0
 count_empty = 0

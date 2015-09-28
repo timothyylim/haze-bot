@@ -19,7 +19,8 @@ def test_function():
 	d = d.strftime("%I:%M%p")
 	target_time = str(d)
 
-
+	print "this is target time:"
+	print target_time
 
 	# Navigate to the correct URL
 
@@ -113,7 +114,8 @@ def test_function():
 	# 		print result.index(row) 	
 	# 		break 
 
-
+	print "index"
+	print index 
 	# print result[12]
 	api_reading = result[44][index]
 	print "raw API reading: "
