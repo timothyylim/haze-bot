@@ -44,16 +44,16 @@ while x == 0:
 
 	if api_reading == "empty":
 		print "----------------------------------"
-		print api_reading + "going to sleep now"
-		api.update_status(status = "empty so going to sleep for 1 min" + str(count_empty))
+		print api_reading + "empty, so going to sleep for 15 mins"
+		# api.update_status(status = "empty so going to sleep for 1 min" + str(count_empty))
 		count_empty += 1
 		print datetime.now()
 		print "----------------------------------"
-		time.sleep(60)
+		time.sleep(900)
 	elif api_reading != api_reading_seed:
 		print "----------------------------------"
 		api.update_status(status = api_reading)
-		print "read updated"
+		print "read updated, sleeping for 40 mins"
 		print api_reading
 		print datetime.now()
 		print "----------------------------------"
@@ -61,12 +61,12 @@ while x == 0:
 	else:
 		print "----------------------------------"
 		print "reading is the same, going to sleep"
-		print "going to sleep for 1 min:" + str(count)
-		api.update_status(status = "going to sleep for 15 mins:" + str(count))
+		print "going to sleep for 15 min:" + str(count)
+		# api.update_status(status = "going to sleep for 15 mins:" + str(count))
 		count += 1 
 		print datetime.now()
 		print "----------------------------------"
-		time.sleep(60)
+		time.sleep(900)
 
 
 
