@@ -3,14 +3,18 @@
 import requests
 from datetime import datetime
 from bs4 import BeautifulSoup
+import time
+from pytz import timezone    
+
 
 def test_function():
 
-	print "test function running"
+	print "Scrape function running"
 	# Check the we are on the right page for the hour 
 	right_page = False 
 
-	current_hour = str(datetime.now().hour)
+	malaysia_time = timezone('Asia/Kuala_Lumpur')
+	current_hour = str(datetime.now(malaysia_time).hour)
 	d = datetime.strptime(current_hour, "%H")
 	d = d.strftime("%I:%M%p")
 	target_time = str(d)
@@ -46,9 +50,9 @@ def test_function():
 	###############
 	# set the date URL
 	###############
-	import time
-	date_url = str((time.strftime("%Y-%m-%d")))+".html"
-
+	malaysia_time = datetime.now(malaysia_time)
+	malaysia_date_url = str(malaysia_time.strftime('%Y-%m-%d')) + ".html"
+	date_url = malaysia_date_url
 
 	###############
 	# put it all together 
