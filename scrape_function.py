@@ -96,13 +96,13 @@ def test_function():
 				output = str(cell.next)
 				redone_output = output[17:24]
 				result[-1].append(redone_output)
+				print redone_output
 
 			else:
 
 				value = cell.string
 				value = value.encode('ascii', 'ignore').decode('ascii')
 				string_value = str(value)
-				print string_value
 				result[-1].append(string_value)
 
 	print "Result table"
