@@ -168,7 +168,7 @@ def test_function():
 
 def previous():
 
-	print "Scrape function running"
+	print "Previous function running"
 	# Check the we are on the right page for the hour 
 	right_page = False 
 
@@ -329,5 +329,5 @@ def previous():
 			
 # print test_function()
 
-
+previous()
 
