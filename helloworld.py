@@ -10,7 +10,13 @@ import tweepy, time, sys
 # Scraping packages
 import requests
 from datetime import datetime
+from pytz import timezone    
 from bs4 import BeautifulSoup
+
+# Get time now
+
+malaysia_time = timezone('Asia/Kuala_Lumpur')
+time_now = datetime.now(malaysia_time)
 
 #argfile = str(sys.argv[1])
  
@@ -31,6 +37,10 @@ filename.close()
 
 # set the seed reading
 api_reading_seed = scrape_function.test_function()
+print "----------------------------------"
+print "api reading seed is" + str(api_reading_seed)
+print "at" + str(time_now)
+print "----------------------------------"
 
 # print api_reading_seed
 
@@ -47,7 +57,7 @@ while x == 0:
 		print api_reading + "empty, so going to sleep for 15 mins"
 		# api.update_status(status = "empty so going to sleep for 1 min" + str(count_empty))
 		count_empty += 1
-		print datetime.now()
+		print time_now
 		print "----------------------------------"
 		time.sleep(900)
 	elif api_reading != api_reading_seed:
@@ -55,7 +65,7 @@ while x == 0:
 		api.update_status(status = api_reading)
 		print "read updated, sleeping for 40 mins"
 		print api_reading
-		print datetime.now()
+		print time_now
 		print "----------------------------------"
 		time.sleep(2400)
 	else:
@@ -64,7 +74,7 @@ while x == 0:
 		print "going to sleep for 15 min:" + str(count)
 		# api.update_status(status = "going to sleep for 15 mins:" + str(count))
 		count += 1 
-		print datetime.now()
+		print time_now
 		print "----------------------------------"
 		time.sleep(900)
 
