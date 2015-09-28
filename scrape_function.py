@@ -105,7 +105,7 @@ def test_function():
 				result[-1].append(string_value)
 
 	print "Result table"
-	print result[0]
+	print result
 	index = 0
 	
 	for row in result:
