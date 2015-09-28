@@ -107,10 +107,6 @@ def test_function():
 			index = row.index(target_time)
 
 			break 
-		else:
-			print "-***********------------"
-			print "We are on the wrong page"
-			print "-***********------------"
 
 
 	# Find PJ's index (44)
