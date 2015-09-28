@@ -36,7 +36,7 @@ filename.close()
 # api_reading = scrape_function.test_function()
 
 # set the seed reading
-api_reading_seed = scrape_function.test_function()
+api_reading_seed = scrape_function.scrape_function()
 print "----------------------------------"
 print "api reading seed is" + str(api_reading_seed)
 print "at" + str(time_now)
@@ -50,7 +50,7 @@ count = 0
 count_empty = 0
 while x == 0:
 	
-	api_reading = scrape_function.test_function()
+	api_reading = scrape_function.scrape_function()
 
 	if api_reading == "empty":
 		print "----------------------------------"
