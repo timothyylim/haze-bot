@@ -104,6 +104,7 @@ def test_function():
 				string_value = str(value)
 				result[-1].append(string_value)
 
+	print "Result table"
 	print result[0]
 	index = 0
 	
