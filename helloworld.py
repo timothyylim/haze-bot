@@ -40,9 +40,13 @@ print "Enter Scrape function"
 api_reading_seed = scrape_function.test_function()
 print "----------------------------------"
 print "api reading seed is "
+print api_reading_seed
+
 if api_reading_seed == "empty":
-	print "checking prvious"
+	print "checking previous"
 	api_reading_seed = scrape_function.previous()
+
+
 print api_reading_seed
 print "at " + str(time_now)
 print "----------------------------------"
