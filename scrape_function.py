@@ -100,8 +100,9 @@ def test_function():
 			else:
 
 				value = cell.string
-				# value = value.encode('ascii', 'ignore').decode('ascii')
+				value = value.encode('ascii', 'ignore').decode('ascii')
 				string_value = str(value)
+				print string_value
 				result[-1].append(string_value)
 
 	print "Result table"
