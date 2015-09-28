@@ -100,12 +100,12 @@ def test_function():
 			else:
 
 				value = cell.string
-				value = value.encode('ascii', 'ignore').decode('ascii')
+				# value = value.encode('ascii', 'ignore').decode('ascii')
 				string_value = str(value)
 				result[-1].append(string_value)
 
 	print "Result table"
-	print result
+	print result[0]
 	index = 0
 	
 	for row in result:
