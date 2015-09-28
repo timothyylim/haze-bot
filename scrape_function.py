@@ -61,7 +61,10 @@ def test_function():
 	###############
 
 	final_url = starting_url+hour_url+date_url
-
+	print "------------------"
+	print "this is the url"
+	print final_url
+	print "------------------"
 
 
 
@@ -103,8 +106,11 @@ def test_function():
 		if target_time in row:
 			index = row.index(target_time)
 
-			right_page = True 
 			break 
+		else:
+			print "-***********------------"
+			print "We are on the wrong page"
+			print "-***********------------"
 
 
 	# Find PJ's index (44)
@@ -114,12 +120,16 @@ def test_function():
 	# 		print result.index(row) 	
 	# 		break 
 
-	print "index"
+	print "----------------"
+	print "index: "
 	print index 
+	print "----------------"
 	# print result[12]
 	api_reading = result[44][index]
+	print "----------------"
 	print "raw API reading: "
 	print api_reading
+	print "----------------"
 
 	if 	api_reading == "" or \
 		api_reading == "n/a":
