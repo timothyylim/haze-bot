@@ -115,7 +115,8 @@ def test_function():
 
 	# print result[12]
 	api_reading = result[44][index]
-
+	print "raw API reading: "
+	print api_reading
 
 	if 	api_reading == "" or \
 		api_reading == "n/a":
@@ -135,6 +136,12 @@ def test_function():
 			print "current API reading: "
 			print api_reading
 			return api_reading
+
+		else:
+			print "current API reading: "
+			print api_reading
+			return api_reading
+
 
 			
 # print test_function()
