@@ -134,8 +134,9 @@ def test_function():
 			api_reading = api_reading[:reading_length-1]
 			# print api_reading
 			return api_reading
+
 			
 # print test_function()
 
 
-# test_function()
+

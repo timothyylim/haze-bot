@@ -36,9 +36,10 @@ filename.close()
 # api_reading = scrape_function.test_function()
 
 # set the seed reading
-api_reading_seed = scrape_function.scrape_function()
+api_reading_seed = scrape_function.test_function()
 print "----------------------------------"
-print "api reading seed is" + str(api_reading_seed)
+print "api reading seed is "
+print api_reading_seed
 print "at" + str(time_now)
 print "----------------------------------"
 
@@ -50,7 +51,7 @@ count = 0
 count_empty = 0
 while x == 0:
 	
-	api_reading = scrape_function.scrape_function()
+	api_reading = scrape_function.test_function()
 
 	if api_reading == "empty":
 		print "----------------------------------"
@@ -65,7 +66,7 @@ while x == 0:
 		api.update_status(status = api_reading)
 		print "read updated, sleeping for 40 mins"
 		print api_reading
-		print time_now
+		print datetime.now()
 		print "----------------------------------"
 		time.sleep(2400)
 	else:
@@ -74,7 +75,7 @@ while x == 0:
 		print "going to sleep for 15 min:" + str(count)
 		# api.update_status(status = "going to sleep for 15 mins:" + str(count))
 		count += 1 
-		print time_now
+		print datetime.now()
 		print "----------------------------------"
 		time.sleep(900)
 
