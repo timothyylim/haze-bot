@@ -16,15 +16,15 @@ def test_function():
 	malaysia_time = timezone('Asia/Kuala_Lumpur')
 	current_hour = str(datetime.now(malaysia_time).hour)
 
-	print "current hour: "
-	print current_hour
-	print "------------------"
+	# print "current hour: "
+	# print current_hour
+	# print "------------------"
 	d = datetime.strptime(current_hour, "%H")
 	d = d.strftime("%I:%M%p")
 	target_time = str(d)
 
-	print "this is target time:"
-	print target_time
+	# print "this is target time:"
+	# print target_time
 
 	# Navigate to the correct URL
 
@@ -65,10 +65,10 @@ def test_function():
 	###############
 
 	final_url = starting_url+hour_url+date_url
-	print "------------------"
-	print "this is the url"
-	print final_url
-	print "------------------"
+	# print "------------------"
+	# print "this is the url"
+	# print final_url
+	# print "------------------"
 
 
 
@@ -106,14 +106,14 @@ def test_function():
 				result[-1].append(string_value)
 
 	
-	print "----------------"
-	print "Result table"
-	print result[0]
+	# print "----------------"
+	# print "Result table"
+	# print result[0]
 
-	print "Target time: "
-	print target_time
+	# print "Target time: "
+	# print target_time
 
-	print "----------------"
+	# print "----------------"
 	index = 0
 	
 	for row in result:
@@ -130,16 +130,16 @@ def test_function():
 	# 		print result.index(row) 	
 	# 		break 
 
-	print "----------------"
-	print "index: "
-	print index 
-	print "----------------"
+	# print "----------------"
+	# print "index: "
+	# print index 
+	# print "----------------"
 	# print result[12]
 	api_reading = result[44][index]
-	print "----------------"
-	print "raw API reading: "
-	print api_reading
-	print "----------------"
+	# print "----------------"
+	# print "raw API reading: "
+	# print api_reading
+	# print "----------------"
 
 	if 	api_reading == "" or \
 		api_reading == "n/a":
