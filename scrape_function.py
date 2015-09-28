@@ -105,8 +105,15 @@ def test_function():
 				string_value = str(value)
 				result[-1].append(string_value)
 
+	
+	print "----------------"
 	print "Result table"
 	print result[0]
+
+	print "Target time: "
+	print target_time
+
+	print "----------------"
 	index = 0
 	
 	for row in result:
