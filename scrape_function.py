@@ -20,6 +20,7 @@ def test_function():
 	target_time = str(d)
 
 
+
 	# Navigate to the correct URL
 
 	starting_url = "http://apims.doe.gov.my/v2/"
@@ -121,8 +122,8 @@ def test_function():
 	if 	api_reading == "" or \
 		api_reading == "n/a":
 
-		print "empty"
-		return "empty"
+		print "empty result"
+		return "empty result"
 
 	else:
 		if 	api_reading.endswith('*') or \
@@ -144,7 +145,7 @@ def test_function():
 
 
 			
-# print test_function()
+print test_function()
 
 
 
