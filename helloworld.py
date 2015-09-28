@@ -42,7 +42,7 @@ print "----------------------------------"
 print "api reading seed is "
 print api_reading_seed
 
-if api_reading_seed == "empty":
+if api_reading_seed == "empty result":
 	print "checking previous"
 	api_reading_seed = scrape_function.previous()
 
