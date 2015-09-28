@@ -94,7 +94,7 @@ def test_function():
 
 			if cell.string == None:
 				output = str(cell.next)
-				redone_output = output[17:24]
+				redone_output = output[17:23]
 				result[-1].append(redone_output)
 				print redone_output
 
