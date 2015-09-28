@@ -132,7 +132,8 @@ def test_function():
 			reading_length = len(api_reading)
 			
 			api_reading = api_reading[:reading_length-1]
-			# print api_reading
+			print "current API reading: "
+			print api_reading
 			return api_reading
 
 			

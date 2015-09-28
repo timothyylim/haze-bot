@@ -40,7 +40,7 @@ api_reading_seed = scrape_function.test_function()
 print "----------------------------------"
 print "api reading seed is "
 print api_reading_seed
-print "at" + str(time_now)
+print "at " + str(time_now)
 print "----------------------------------"
 
 # print api_reading_seed
