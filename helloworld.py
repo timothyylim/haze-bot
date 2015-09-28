@@ -36,6 +36,7 @@ filename.close()
 # api_reading = scrape_function.test_function()
 
 # set the seed reading
+print "Enter Scrape function"
 api_reading_seed = scrape_function.test_function()
 print "----------------------------------"
 print "api reading seed is "

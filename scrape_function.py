@@ -15,6 +15,10 @@ def test_function():
 
 	malaysia_time = timezone('Asia/Kuala_Lumpur')
 	current_hour = str(datetime.now(malaysia_time).hour)
+
+	print "current hour: "
+	print current_hour
+	print "------------------"
 	d = datetime.strptime(current_hour, "%H")
 	d = d.strftime("%I:%M%p")
 	target_time = str(d)
@@ -101,7 +105,7 @@ def test_function():
 				result[-1].append(string_value)
 
 	index = 0
-
+	
 	for row in result:
 		if target_time in row:
 			index = row.index(target_time)
@@ -153,7 +157,7 @@ def test_function():
 
 
 			
-print test_function()
+# print test_function()
 
 
 
