@@ -173,7 +173,11 @@ def previous():
 	right_page = False 
 
 	malaysia_time = timezone('Asia/Kuala_Lumpur')
-	current_hour = datetime.now(malaysia_time).hour - 1
+	current_hour = datetime.now(malaysia_time).hour
+	if current_hour == 0:
+		current_hour = 11
+	else:
+		current_hour = current_hour -1
 	current_hour = str(current_hour)
 
 	print "current hour: "
