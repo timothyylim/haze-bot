@@ -212,15 +212,18 @@ def previous():
 	# set the hour URL
 	###############
 	current_hour_int = int(current_hour)
+	# current_hour_int = 5
 
+	print "CCC"
+	print current_hour_int
+	if current_hour_int >= 0 and current_hour_int <= 5:
 
-	if current_hour_int == 0 and current_hour_int < 6:
 		hour_url = "hour1_"
 
-	elif current_hour_int > 5 and current_hour_int <12:
+	elif current_hour_int > 5 and current_hour_int <= 11:
 		hour_url = "hour2_"
 
-	elif current_hour_int > 11 and current_hour_int < 18:
+	elif current_hour_int > 11 and current_hour_int <= 17:
 		hour_url = "hour3_"
 
 	elif current_hour_int > 17:
@@ -355,5 +358,5 @@ def concat_to_digit(string):
 		return concatenated + "PM" 
 
 
-# previous()
+previous()
 

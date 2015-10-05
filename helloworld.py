@@ -32,18 +32,30 @@ api = tweepy.API(auth)
 
 is_first_tweet = get_status.is_first(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_KEY, ACCESS_SECRET)
 
+
+def is_new(api_reading):
+	print "Printing last: "
+	print get_status.return_last(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_KEY, ACCESS_SECRET)
+	if api_reading != scrape_function.previous():
+		return True
+	else:
+		return False 
+
+updated_old = False
 x = 0 
 while x == 0:
 	
 	api_reading = scrape_function.test_function()
 
-	if api_reading != "empty result" and is_first_tweet == True:
 
+
+	if api_reading != "empty result" and is_new(api_reading) == True:
+		updated_old = False
 		if int(api_reading) >= 50 and int(api_reading) <= 100:
 			print "----------------------------------"
 			print api_reading + "Printing first tweet"
-			message = "API: " + api_reading + ", PJ Selangor. Pollution levels moderate."
-			api.update_status(status = api_reading)
+			message = "API: " + api_reading + " (PJ, Selangor). Pollution levels moderate."
+			api.update_status(status = message)
 			print datetime.now(malaysia_time)
 			print "Sleeping for 20 minutes"
 			print "----------------------------------"
@@ -52,8 +64,8 @@ while x == 0:
 		elif int(api_reading) > 100 and int(api_reading) <= 200:
 			print "----------------------------------"
 			print api_reading + "Printing first tweet"
-			message = "API: " + api_reading + ", PJ Selangor. Pollution levels unhealthy."
-			api.update_status(status = api_reading)
+			message = "API: " + api_reading + " (PJ, Selangor). Pollution levels unhealthy."
+			api.update_status(status = message)
 			print datetime.now(malaysia_time)
 			print "Sleeping for 20 minutes"
 			print "----------------------------------"
@@ -62,8 +74,8 @@ while x == 0:
 		elif int(api_reading) > 200 and int(api_reading) <= 300:
 			print "----------------------------------"
 			print api_reading + "Printing first tweet"
-			message = "API: " + api_reading + ", PJ Selangor. Pollution levels very unhealthy."
-			api.update_status(status = api_reading)
+			message = "API: " + api_reading + " (PJ, Selangor). Pollution levels very unhealthy."
+			api.update_status(status = message)
 			print datetime.now(malaysia_time)
 			print "Sleeping for 20 minutes"
 			print "----------------------------------"
@@ -72,17 +84,66 @@ while x == 0:
 		elif int(api_reading) > 300:
 			print "----------------------------------"
 			print api_reading + "Printing first tweet"
-			message = "API: " + api_reading + ", PJ Selangor. Pollution levels hazardous."
-			api.update_status(status = api_reading)
+			message = "API: " + api_reading + " (PJ, Selangor). Pollution levels hazardous."
+			api.update_status(status = message)
 			print datetime.now(malaysia_time)
 			print "Sleeping for 20 minutes"
 			print "----------------------------------"
 			time.sleep(1200)
 
 	else:
-		print "----------------------------------"
-		print "no results posted yet, sleeping for 10 minutes"
-		print datetime.now(malaysia_time)
-		time.sleep(600)
+		if api_reading == "empty result":
+
+			if updated_old == False:
+				updated_old = True
+				api_reading = scrape_function.previous()
+				# api_reading = get_status.return_last(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_KEY, ACCESS_SECRET)
+				if int(api_reading) >= 50 and int(api_reading) <= 100:
+					print "----------------------------------"
+					print api_reading + "Printing first tweet"
+					message = "API: " + api_reading + " (PJ, Selangor). Pollution levels moderate."
+					api.update_status(status = message)
+					print datetime.now(malaysia_time)
+					print "Sleeping for 20 minutes"
+					print "----------------------------------"
+					time.sleep(1200)
+
+				elif int(api_reading) > 100 and int(api_reading) <= 200:
+					print "----------------------------------"
+					print api_reading + "Printing first tweet"
+					message = "API: " + api_reading + " (PJ, Selangor). Pollution levels unhealthy."
+					api.update_status(status = message)
+					print datetime.now(malaysia_time)
+					print "Sleeping for 20 minutes"
+					print "----------------------------------"
+					time.sleep(1200)
+
+				elif int(api_reading) > 200 and int(api_reading) <= 300:
+					print "----------------------------------"
+					print api_reading + "Printing first tweet"
+					message = "API: " + api_reading + " (PJ, Selangor). Pollution levels very unhealthy."
+					api.update_status(status = message)
+					print datetime.now(malaysia_time)
+					print "Sleeping for 20 minutes"
+					print "----------------------------------"
+					time.sleep(1200)
+
+				elif int(api_reading) > 300:
+					print "----------------------------------"
+					print api_reading + "Printing first tweet"
+					message = "API: " + api_reading + " (PJ, Selangor). Pollution levels hazardous."
+					api.update_status(status = message)
+					print datetime.now(malaysia_time)
+					print "Sleeping for 20 minutes"
+					print "----------------------------------"
+					time.sleep(1200)
+
+			
+
+		else:
+			print "----------------------------------"
+			print "no results posted yet, sleeping for 10 minutes"
+			print datetime.now(malaysia_time)
+			time.sleep(600)
 
 
