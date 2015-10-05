@@ -39,42 +39,42 @@ while x == 0:
 
 	if api_reading != "empty result" and is_first_tweet == True:
 
-		if api_reading >= 50 and api_reading <= 100:
+		if int(api_reading) >= 50 and int(api_reading) <= 100:
 			print "----------------------------------"
 			print api_reading + "Printing first tweet"
 			message = "API: " + api_reading + ", PJ Selangor. Pollution levels moderate."
 			api.update_status(status = api_reading)
-			print time_now
+			print datetime.now(malaysia_time)
 			print "Sleeping for 20 minutes"
 			print "----------------------------------"
 			time.sleep(1200)
 
-		elif api_reading > 100 and api_reading <= 200:
+		elif int(api_reading) > 100 and int(api_reading) <= 200:
 			print "----------------------------------"
 			print api_reading + "Printing first tweet"
 			message = "API: " + api_reading + ", PJ Selangor. Pollution levels unhealthy."
 			api.update_status(status = api_reading)
-			print time_now
+			print datetime.now(malaysia_time)
 			print "Sleeping for 20 minutes"
 			print "----------------------------------"
 			time.sleep(1200)
 
-		elif api_reading > 200 and api_reading <= 300:
+		elif int(api_reading) > 200 and int(api_reading) <= 300:
 			print "----------------------------------"
 			print api_reading + "Printing first tweet"
 			message = "API: " + api_reading + ", PJ Selangor. Pollution levels very unhealthy."
 			api.update_status(status = api_reading)
-			print time_now
+			print datetime.now(malaysia_time)
 			print "Sleeping for 20 minutes"
 			print "----------------------------------"
 			time.sleep(1200)
 
-		elif api_reading > 300:
+		elif int(api_reading) > 300:
 			print "----------------------------------"
 			print api_reading + "Printing first tweet"
 			message = "API: " + api_reading + ", PJ Selangor. Pollution levels hazardous."
 			api.update_status(status = api_reading)
-			print time_now
+			print datetime.now(malaysia_time)
 			print "Sleeping for 20 minutes"
 			print "----------------------------------"
 			time.sleep(1200)
@@ -82,7 +82,7 @@ while x == 0:
 	else:
 		print "----------------------------------"
 		print "no results posted yet, sleeping for 10 minutes"
-		print time_now
+		print datetime.now(malaysia_time)
 		time.sleep(600)
 
 
