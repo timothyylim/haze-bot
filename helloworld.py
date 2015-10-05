@@ -2,6 +2,7 @@
 
 #import scraping function 
 import scrape_function 
+import get_status
 
 # -*- coding: utf-8 -*-
  
@@ -34,70 +35,71 @@ api = tweepy.API(auth)
 # filename.close()
 
 
-########
 
-statuses = api.statuses.user_timeline(screen_name='testrobot112122')
-
-print [status['text'] for status in statuses]
-#######
-
-
-
+is_first_tweet = get_status.is_first(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_KEY, ACCESS_SECRET)
 
 
 # api_reading = scrape_function.test_function()
 
 # set the seed reading
-print "Enter Scrape function"
-api_reading_seed = scrape_function.test_function()
-print "----------------------------------"
-print "api reading seed is "
-print api_reading_seed
+# print "Enter Scrape function"
+# api_reading_seed = scrape_function.test_function()
+# print "----------------------------------"
+# print "api reading seed is "
+# print api_reading_seed
 
-if api_reading_seed == "empty result":
-	print "checking previous"
-	api_reading_seed = scrape_function.previous()
+# if api_reading_seed == "empty result":
+# 	print "checking previous"
+# 	api_reading_seed = scrape_function.previous()
 
 
-print api_reading_seed
-print "at " + str(time_now)
-print "----------------------------------"
+# print api_reading_seed
+# print "at " + str(time_now)
+# print "----------------------------------"
 
 # print api_reading_seed
 
 # api.update_status(status = "Hello World!")
 x = 0 
-count = 0
-count_empty = 0
 while x == 0:
 	
 	api_reading = scrape_function.test_function()
 
-	if api_reading == "empty result":
+	if api_reading != "empty result" and is_first_tweet == True:
 		print "----------------------------------"
-		print api_reading + "empty, so going to sleep for 15 mins"
-		# api.update_status(status = "empty so going to sleep for 1 min" + str(count_empty))
-		count_empty += 1
-		print time_now
-		print "----------------------------------"
-		time.sleep(900)
-	elif api_reading != api_reading_seed:
-		print "----------------------------------"
+		print api_reading + "PRINTING FIRST TWEET!!!"
 		api.update_status(status = api_reading)
-		print "read updated, sleeping for 40 mins"
-		print api_reading
-		print datetime.now()
+		print time_now
+		print "Sleeping for 20 minutes"
 		print "----------------------------------"
-		time.sleep(2400)
+		time.sleep(1200)
+
 	else:
 		print "----------------------------------"
-		print "reading is the same, going to sleep"
-		print "going to sleep for 15 min:" + str(count)
-		# api.update_status(status = "going to sleep for 15 mins:" + str(count))
-		count += 1 
-		print datetime.now()
-		print "----------------------------------"
-		time.sleep(900)
+		print "no results posted yet, sleeping for 10 minutes"
+		print time_now
+		time.sleep(600)
+
+
+
+
+	# elif api_reading != api_reading_seed:
+	# 	print "----------------------------------"
+	# 	# api.update_status(status = api_reading)
+	# 	print "read updated, sleeping for 40 mins"
+	# 	print api_reading
+	# 	print datetime.now()
+	# 	print "----------------------------------"
+	# 	time.sleep(2400)
+	# else:
+	# 	print "----------------------------------"
+	# 	print "reading is the same, going to sleep"
+	# 	print "going to sleep for 15 min:" + str(count)
+	# 	# api.update_status(status = "going to sleep for 15 mins:" + str(count))
+	# 	count += 1 
+	# 	print datetime.now()
+	# 	print "----------------------------------"
+	# 	time.sleep(900)
 
 
 

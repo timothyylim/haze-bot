@@ -1,10 +1,13 @@
 
 
 import requests
-from datetime import datetime
+from datetime import datetime, timedelta
 from bs4 import BeautifulSoup
 import time
 from pytz import timezone    
+
+#To strip non-numeric characters
+import re
 
 
 def test_function():
@@ -16,9 +19,9 @@ def test_function():
 	malaysia_time = timezone('Asia/Kuala_Lumpur')
 	current_hour = str(datetime.now(malaysia_time).hour)
 
-	# print "current hour: "
-	# print current_hour
-	# print "------------------"
+	print "current hour: "
+	print current_hour
+	print "------------------"
 	d = datetime.strptime(current_hour, "%H")
 	d = d.strftime("%I:%M%p")
 	target_time = str(d)
@@ -94,9 +97,9 @@ def test_function():
 
 			if cell.string == None:
 				output = str(cell.next)
-				redone_output = output[16:23]
+				redone_output = concat_to_digit(output)
 				result[-1].append(redone_output)
-				print redone_output
+				# print redone_output
 
 			else:
 
@@ -158,11 +161,13 @@ def test_function():
 			api_reading = api_reading[:reading_length-1]
 			print "current API reading: "
 			print api_reading
+			print "Scrape DONE"
 			return api_reading
 
 		else:
 			print "current API reading: "
 			print api_reading
+			print "Scrape DONE"
 			return api_reading
 
 
@@ -173,16 +178,20 @@ def previous():
 	right_page = False 
 
 	malaysia_time = timezone('Asia/Kuala_Lumpur')
-	current_hour = datetime.now(malaysia_time).hour
+	current_date = datetime.now(malaysia_time)
+	yesterday = datetime.now(malaysia_time) - timedelta(days=1)
+	print yesterday
+	current_hour = current_date.hour
 	
 	if current_hour == 0:
 		current_hour = 11
+		current_date = yesterday
+
 	else:
 		current_hour = current_hour -1
 	
 
 	current_hour = str(current_hour)
-
 	print "current hour: "
 	print current_hour
 	print "------------------"
@@ -205,7 +214,7 @@ def previous():
 	current_hour_int = int(current_hour)
 
 
-	if current_hour_int > 0 and current_hour_int < 6:
+	if current_hour_int == 0 and current_hour_int < 6:
 		hour_url = "hour1_"
 
 	elif current_hour_int > 5 and current_hour_int <12:
@@ -223,7 +232,7 @@ def previous():
 	###############
 	# set the date URL
 	###############
-	malaysia_time = datetime.now(malaysia_time)
+	malaysia_time = current_date
 	malaysia_date_url = str(malaysia_time.strftime('%Y-%m-%d')) + ".html"
 	date_url = malaysia_date_url
 
@@ -261,8 +270,10 @@ def previous():
 
 			if cell.string == None:
 				output = str(cell.next)
-				redone_output = output[16:23]
+				print "Before concat: " + output
+				redone_output = concat_to_digit(output)
 				result[-1].append(redone_output)
+
 				print redone_output
 
 			else:
@@ -270,6 +281,7 @@ def previous():
 				value = cell.string
 				value = value.encode('ascii', 'ignore').decode('ascii')
 				string_value = str(value)
+				# print "before concat:" + string_value
 				result[-1].append(string_value)
 
 	
@@ -335,6 +347,13 @@ def previous():
 
 			
 # print test_function()
+def concat_to_digit(string):
+	concatenated = re.sub("[^0-9,:]", "", string)
+	if "AM" in string:
+		return concatenated + "AM"
+	else:
+		return concatenated + "PM" 
 
-previous()
+
+# previous()
 
