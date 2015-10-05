@@ -61,7 +61,7 @@ while x == 0:
 	
 	api_reading = scrape_function.test_function()
 
-	if api_reading == "empty":
+	if api_reading == "empty result":
 		print "----------------------------------"
 		print api_reading + "empty, so going to sleep for 15 mins"
 		# api.update_status(status = "empty so going to sleep for 1 min" + str(count_empty))

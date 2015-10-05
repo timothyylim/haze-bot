@@ -6,10 +6,12 @@ Aim is to get a working prototype to tweet air quality data for Kuala Lumpur Mal
 #Milestones 
 - [x]  Register bot and execute 'Hello world' every 3 hours.
 
-- [ ] Deploy to Heroku and test
+- [x] Deploy to Heroku and test
 
-- [ ] Scrape (http://apims.doe.gov.my/v2/) locally in python file
+- [x] Scrape (http://apims.doe.gov.my/v2/) locally in python file
 
-- [ ] Connect bot with scraping file locally and test output
+- [x] Connect bot with scraping file locally and test output
 
-- [ ] Push all files to Heroku
+- [x] Push all files to Heroku
+
+
