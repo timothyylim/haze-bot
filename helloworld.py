@@ -33,6 +33,18 @@ api = tweepy.API(auth)
 # f=filename.readlines()
 # filename.close()
 
+
+########
+
+statuses = api.statuses.user_timeline(screen_name='testrobot112122')
+
+print [status['text'] for status in statuses]
+#######
+
+
+
+
+
 # api_reading = scrape_function.test_function()
 
 # set the seed reading
