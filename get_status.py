@@ -21,7 +21,7 @@ def is_first(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_KEY, ACCESS_SECRET):
 	current_hour = datetime.now(malaysia_time).strftime("%Y-%m-%d %H")
 	# print "Current hour: " + current_hour
 	 
-	for status in tweepy.Cursor(api.user_timeline,id="testrobot112122").items(1): 
+	for status in tweepy.Cursor(api.user_timeline,id="haze_watch").items(1): 
 			last_tweet = status.text
 			time_last_tweet = status.created_at.strftime("%Y-%m-%d %H")
 	# print "Last tweet: " + last_tweet

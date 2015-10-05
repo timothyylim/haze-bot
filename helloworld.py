@@ -66,13 +66,46 @@ while x == 0:
 	api_reading = scrape_function.test_function()
 
 	if api_reading != "empty result" and is_first_tweet == True:
-		print "----------------------------------"
-		print api_reading + "PRINTING FIRST TWEET!!!"
-		api.update_status(status = api_reading)
-		print time_now
-		print "Sleeping for 20 minutes"
-		print "----------------------------------"
-		time.sleep(1200)
+
+		if api_reading >= 50 and api_reading <= 100:
+			print "----------------------------------"
+			print api_reading + "Printing first tweet"
+			message = "API: " + api_reading + ", PJ Selangor. Pollution levels moderate."
+			api.update_status(status = api_reading)
+			print time_now
+			print "Sleeping for 20 minutes"
+			print "----------------------------------"
+			time.sleep(1200)
+
+		elif api_reading > 100 and api_reading <= 200:
+			print "----------------------------------"
+			print api_reading + "Printing first tweet"
+			message = "API: " + api_reading + ", PJ Selangor. Pollution levels unhealthy."
+			api.update_status(status = api_reading)
+			print time_now
+			print "Sleeping for 20 minutes"
+			print "----------------------------------"
+			time.sleep(1200)
+
+		elif api_reading > 200 and api_reading <= 300:
+			print "----------------------------------"
+			print api_reading + "Printing first tweet"
+			message = "API: " + api_reading + ", PJ Selangor. Pollution levels very unhealthy."
+			api.update_status(status = api_reading)
+			print time_now
+			print "Sleeping for 20 minutes"
+			print "----------------------------------"
+			time.sleep(1200)
+
+		elif api_reading > 300:
+			print "----------------------------------"
+			print api_reading + "Printing first tweet"
+			message = "API: " + api_reading + ", PJ Selangor. Pollution levels hazardous."
+			api.update_status(status = api_reading)
+			print time_now
+			print "Sleeping for 20 minutes"
+			print "----------------------------------"
+			time.sleep(1200)
 
 	else:
 		print "----------------------------------"
