@@ -36,19 +36,22 @@ api = tweepy.API(auth)
 
 
 
-def is_new(api_reading):
-	if api_reading != scrape_function.previous():
+def is_new(api_reading, time):
+
+	print "Checking if tweet is new"
+	if api_reading != scrape_function.previous(time):
 		return True
 	else:
 		return False 
-
-
 
 def get_last_hour(time):
 	last_hour = time - timedelta(hours = 1)
 	return last_hour
 
 def update_twitter(api_reading):
+	
+	"Attempting to update Twitter"
+
 	if int(api_reading) >= 50 and int(api_reading) <= 100:
 		print "----------------------------------"
 		print api_reading + "Printing first tweet"
@@ -89,6 +92,11 @@ def update_twitter(api_reading):
 		print "----------------------------------"
 		time.sleep(1200)
 
+	else:
+		print "BROKEN_--------"
+		 
+
+
 
 x = 0 
 while x == 0:
@@ -102,15 +110,21 @@ while x == 0:
 		last_hour = get_last_hour(time)
 		api_reading = scrape_function.scrape_website(last_hour)
 		
-		if is_new(api_reading):
+		if is_new(api_reading, time):
+			"Attempting to access update method"
 			update_twitter(api_reading)
 
+		else:
+			"It's not new"
 
-	else:
-		update_twitter(api_reading)
+		
 
 
-	
+	# else:
+	# 	update_twitter(api_reading)
+
+	x = 1 
+
 
 
 	# api_reading = scrape_function.scrape_website()

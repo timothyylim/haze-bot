@@ -130,6 +130,7 @@ def scrape_website(time):
 
 		print "empty result"
 		print "Scrape DONE"
+		print "------------------------"
 		return "empty result"
 
 	else:
@@ -144,92 +145,26 @@ def scrape_website(time):
 			print "current API reading: "
 			print api_reading
 			print "Scrape DONE"
+			print "------------------------"
 			return api_reading
 
 		else:
 			print "current API reading: "
 			print api_reading
 			print "Scrape DONE"
+			print "------------------------"
 			return api_reading
 
 
-def previous():
+def previous(time):
 
 	print "Previous function running"
 
-	malaysia_time = timezone('Asia/Kuala_Lumpur')
-	current_date = datetime.now(malaysia_time)
-	yesterday = datetime.now(malaysia_time) - timedelta(days=1)
-	print yesterday
-	current_hour = current_date.hour
-	
-	if current_hour == 0:
-		current_hour = 11
-		current_date = yesterday
 
-	else:
-		current_hour = current_hour -1
-	
+	current_hour = get_current_hour(time)
+	target_time = get_target_time(current_hour)
 
-	current_hour = str(current_hour)
-	print "current hour: "
-	print current_hour
-	print "------------------"
-	d = datetime.strptime(current_hour, "%H")
-	d = d.strftime("%I:%M%p")
-	target_time = str(d)
-
-	print "this is target time:"
-	print target_time
-
-	# Navigate to the correct URL
-
-	starting_url = "http://apims.doe.gov.my/v2/"
-	hour_url = ""
-	date_url = ""
-
-	###############
-	# set the hour URL
-	###############
-	current_hour_int = int(current_hour)
-	# current_hour_int = 5
-
-	print "CCC"
-	print current_hour_int
-	if current_hour_int >= 0 and current_hour_int <= 5:
-
-		hour_url = "hour1_"
-
-	elif current_hour_int > 5 and current_hour_int <= 11:
-		hour_url = "hour2_"
-
-	elif current_hour_int > 11 and current_hour_int <= 17:
-		hour_url = "hour3_"
-
-	elif current_hour_int > 17:
-		hour_url = "hour4_"
-
-	else:
-		print "ERROR: could not get current hour"
-
-	###############
-	# set the date URL
-	###############
-	malaysia_time = current_date
-	malaysia_date_url = str(malaysia_time.strftime('%Y-%m-%d')) + ".html"
-	date_url = malaysia_date_url
-
-	###############
-	# put it all together 
-	###############
-
-	final_url = starting_url+hour_url+date_url
-	print "------------------"
-	print "this is the url"
-	print final_url
-	print "------------------"
-
-
+	final_url = generate_url(target_time, current_hour)
 
 	r = requests.get(final_url)
 	soup = BeautifulSoup(r.content)
@@ -253,29 +188,27 @@ def previous():
 
 			if cell.string == None:
 				output = str(cell.next)
-				print "Before concat: " + output
 				redone_output = concat_to_digit(output)
 				result[-1].append(redone_output)
 
-				print redone_output
+				# print redone_output
 
 			else:
 
 				value = cell.string
 				value = value.encode('ascii', 'ignore').decode('ascii')
 				string_value = str(value)
-				# print "before concat:" + string_value
 				result[-1].append(string_value)
 
 	
-	print "----------------"
-	print "Result table"
-	print result[0]
+	# print "----------------"
+	# print "Result table"
+	# print result[0]
 
-	print "Target time: "
-	print target_time
+	# print "Target time: "
+	# print target_time
 
-	print "----------------"
+	# print "----------------"
 	index = 0
 	
 	for row in result:
@@ -292,16 +225,16 @@ def previous():
 	# 		print result.index(row) 	
 	# 		break 
 
-	print "----------------"
-	print "index: "
-	print index 
-	print "----------------"
+	# print "----------------"
+	# print "index: "
+	# print index 
+	# print "----------------"
 	# print result[12]
 	api_reading = result[44][index]
-	print "----------------"
-	print "raw API reading: "
-	print api_reading
-	print "----------------"
+	# print "----------------"
+	# print "raw API reading: "
+	# print api_reading
+	# print "----------------"
 
 	if 	api_reading == "" or \
 		api_reading == "n/a":
