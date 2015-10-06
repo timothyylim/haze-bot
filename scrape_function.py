@@ -10,11 +10,16 @@ from pytz import timezone
 import re
 
 
+def get_target_time():
+
+
+
+
+
+
 def test_function():
 
 	print "Scrape function running"
-	# Check the we are on the right page for the hour 
-	right_page = False 
 
 	malaysia_time = timezone('Asia/Kuala_Lumpur')
 	current_hour = str(datetime.now(malaysia_time).hour)
@@ -174,8 +179,6 @@ def test_function():
 def previous():
 
 	print "Previous function running"
-	# Check the we are on the right page for the hour 
-	right_page = False 
 
 	malaysia_time = timezone('Asia/Kuala_Lumpur')
 	current_date = datetime.now(malaysia_time)
@@ -358,5 +361,5 @@ def concat_to_digit(string):
 		return concatenated + "PM" 
 
 
-previous()
+# previous()
 

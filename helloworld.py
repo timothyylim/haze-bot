@@ -33,15 +33,8 @@ api = tweepy.API(auth)
 is_first_tweet = get_status.is_first(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_KEY, ACCESS_SECRET)
 
 
-def is_new(api_reading):
-	print "Printing last: "
-	print get_status.return_last(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_KEY, ACCESS_SECRET)
-	if api_reading != scrape_function.previous():
-		return True
-	else:
-		return False 
-
 updated_old = False
+
 x = 0 
 while x == 0:
 	
@@ -146,4 +139,14 @@ while x == 0:
 			print datetime.now(malaysia_time)
 			time.sleep(600)
 
+
+
+
+def is_new(api_reading):
+	print "Printing last: "
+	print get_status.return_last(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_KEY, ACCESS_SECRET)
+	if api_reading != scrape_function.previous():
+		return True
+	else:
+		return False 
 
