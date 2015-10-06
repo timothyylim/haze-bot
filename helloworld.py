@@ -31,21 +31,21 @@ auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 api = tweepy.API(auth)
 
 
-
-# is_first_tweet = get_status.is_first(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_KEY, ACCESS_SECRET)
-
+time_curr = datetime.now(timezone('Asia/Kuala_Lumpur'))
 
 
 def is_new(api_reading, time):
 
 	print "Checking if tweet is new"
-	if api_reading != scrape_function.previous(time):
+	if api_reading != scrape_function.previous(time_curr):
+		print "Tweet is new"
 		return True
 	else:
+		print "Tweet is old"
 		return False 
 
 def get_last_hour(time):
-	last_hour = time - timedelta(hours = 1)
+	last_hour = time_curr - timedelta(hours = 1)
 	return last_hour
 
 def update_twitter(api_reading):
@@ -57,7 +57,7 @@ def update_twitter(api_reading):
 		print api_reading + "Printing first tweet"
 		message = "API: " + api_reading + " (PJ, Selangor). Pollution levels moderate."
 		api.update_status(status = message)
-		print datetime.now(malaysia_time)
+		print time_curr
 		print "Sleeping for 20 minutes"
 		print "----------------------------------"
 		time.sleep(1200)
@@ -67,7 +67,7 @@ def update_twitter(api_reading):
 		print api_reading + "Printing first tweet"
 		message = "API: " + api_reading + " (PJ, Selangor). Pollution levels unhealthy."
 		api.update_status(status = message)
-		print datetime.now(malaysia_time)
+		print time_curr
 		print "Sleeping for 20 minutes"
 		print "----------------------------------"
 		time.sleep(1200)
@@ -77,7 +77,7 @@ def update_twitter(api_reading):
 		print api_reading + "Printing first tweet"
 		message = "API: " + api_reading + " (PJ, Selangor). Pollution levels very unhealthy."
 		api.update_status(status = message)
-		print datetime.now(malaysia_time)
+		print time_curr
 		print "Sleeping for 20 minutes"
 		print "----------------------------------"
 		time.sleep(1200)
@@ -87,13 +87,13 @@ def update_twitter(api_reading):
 		print api_reading + "Printing first tweet"
 		message = "API: " + api_reading + " (PJ, Selangor). Pollution levels hazardous."
 		api.update_status(status = message)
-		print datetime.now(malaysia_time)
+		print time_curr
 		print "Sleeping for 20 minutes"
 		print "----------------------------------"
 		time.sleep(1200)
 
 	else:
-		print "BROKEN_--------"
+		print "BROKEN--------"
 		 
 
 
@@ -101,29 +101,45 @@ def update_twitter(api_reading):
 x = 0 
 while x == 0:
 
-	time = datetime.now(timezone('Asia/Kuala_Lumpur'))
+	time_curr = datetime.now(timezone('Asia/Kuala_Lumpur'))
 	
-	api_reading = scrape_function.scrape_website(time)
+	api_reading = scrape_function.scrape_website(time_curr)
 	
 
 	if api_reading == "empty result":
-		last_hour = get_last_hour(time)
+		print "result is empty"
+		last_hour = get_last_hour(time_curr)
 		api_reading = scrape_function.scrape_website(last_hour)
 		
-		if is_new(api_reading, time):
+		if is_new(api_reading, last_hour):
 			"Attempting to access update method"
 			update_twitter(api_reading)
 
 		else:
-			"It's not new"
+			"Old tweet has been tweeted, sleeping for 10 minutes"
+			print time_curr 
+			time.sleep(600)
 
+
+	else:
+
+		print "Need to update twitter"
+
+		if is_new(api_reading, time_curr):
+			update_twitter(api_reading)
+
+
+		else:
+			print "Tweet is already updated, sleeping for 10 minutes"
+			print time_curr
+			time.sleep(600)
 		
 
 
 	# else:
 	# 	update_twitter(api_reading)
 
-	x = 1 
+	
 
 
 

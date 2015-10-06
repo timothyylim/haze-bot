@@ -119,10 +119,6 @@ def scrape_website(time):
 			break 
 
 
-	print "Result table: "
-	print result[44][:]
-
-
 	api_reading = result[44][index]
 
 	if 	api_reading == "" or \
